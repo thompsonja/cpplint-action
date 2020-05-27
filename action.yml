@@ -19,11 +19,4 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://thompsonja/cpplint:1.4.5"
-  args:
-    - cpplint
-    - --recursive
-    - --headers=${{ inputs.headers }}
-    - --extensions=${{ inputs.extensions }}
-    - --filter=${{ inputs.filter }}
-    - .
+  image: "Dockerfile"
