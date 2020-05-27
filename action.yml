@@ -1,0 +1,29 @@
+name: "cpplint"
+description: "Run cpplint on cpp files in a code base"
+author: "Joshua Thompson"
+branding:
+  icon: "award"
+  color: "purple"
+inputs:
+  extensions:
+    description: "Comma separated list of source extensions to check"
+    default: "c,cc,h,hpp,c++,h++,hh,cu,cpp,hxx,cxx,cuh"
+    required: false
+  headers:
+    description: "Comma separated list of header extensions to check"
+    default: "h,hpp,h++,hh,hxx,cuh"
+    required: false
+  filter:
+    description: "cpplint filter string"
+    default: "+"
+    required: false
+runs:
+  using: "docker"
+  image: "docker://thompsonja/cpplint:1.4.5"
+  args:
+    - cpplint
+    - --recursive
+    - --headers=${{ inputs.headers }}
+    - --extensions=${{ inputs.extensions }}
+    - --filter=${{ inputs.filter }}
+    - .
