@@ -17,6 +17,10 @@ inputs:
     description: "cpplint filter string"
     default: "+"
     required: false
+  excludes:
+    description: "cpplint exclude string, comma separated"
+    default: ""
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
